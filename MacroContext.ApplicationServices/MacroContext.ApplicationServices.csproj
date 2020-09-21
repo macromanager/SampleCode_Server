@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0346EDC3-EE74-495A-BBBF-53269D82094E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MacroContext.ApplicationServices</RootNamespace>
+    <AssemblyName>MacroContext.ApplicationServices</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommandHandlers\AddReferenceProfilesToPackageCommandHandler.cs" />
+    <Compile Include="CommandHandlers\ICommandDispatcher.cs" />
+    <Compile Include="CommandHandlers\RegisterUserCommandHandler.cs" />
+    <Compile Include="CommandHandlers\EditMacrosCommandHandler.cs" />
+    <Compile Include="CommandHandlers\AddMacrosToPackageCommandHandler.cs" />
+    <Compile Include="CommandHandlers\BatchCommandHandler.cs" />
+    <Compile Include="CommandHandlers\IQueryProcessor.cs" />
+    <Compile Include="CommandHandlers\ICommandProcessor.cs" />
+    <Compile Include="CommandHandlers\IEventStore.cs" />
+    <Compile Include="CommandHandlers\DownloadPackageCommandHandler.cs" />
+    <Compile Include="CommandHandlers\RemoveReferenceProfilesFromPackageCommandHandler.cs" />
+    <Compile Include="CommandHandlers\RemoveMacrosFromPackageCommandHandler.cs" />
+    <Compile Include="CommandHandlers\RemoveUserCommandHandler.cs" />
+    <Compile Include="CommandHandlers\RemovePackageCommandHandler.cs" />
+    <Compile Include="CommandHandlers\EditPackageCommandHandler.cs" />
+    <Compile Include="CommandHandlers\AddPackageCommandHandler.cs" />
+    <Compile Include="CommandHandlers\ICommandHandler.cs" />
+    <Compile Include="CrossCuttingConcerns\CommandHandlerDecorators\ExceptionHandlerCommandHandlerDecorator.cs" />
+    <Compile Include="CrossCuttingConcerns\CommandHandlerDecorators\LoggingCommandHandlerDecorator.cs" />
+    <Compile Include="CrossCuttingConcerns\QueryHandlerDecorators\ExceptionHandlerQueryHandlerDecorator.cs" />
+    <Compile Include="CrossCuttingConcerns\QueryHandlerDecorators\LoggingQueryHandlerDecorator.cs" />
+    <Compile Include="InternalExceptions\EntityAlreadyExistsException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryHandlers\CheckPackageUniqueNameQueryHandler.cs" />
+    <Compile Include="QueryHandlers\GetPackageLibraryMetadataQueryHandler.cs" />
+    <Compile Include="QueryHandlers\GetAllUsersQueryHandler.cs" />
+    <Compile Include="QueryHandlers\GetReferenceProfilesByPackageIdQueryHandler.cs" />
+    <Compile Include="QueryHandlers\SearchPackagesQueryHandler.cs" />
+    <Compile Include="QueryHandlers\GetPackagesByUserIdQueryHandler.cs" />
+    <Compile Include="QueryHandlers\GetMacrosByPackageIdQueryHandler.cs" />
+    <Compile Include="QueryHandlers\GetAllPackagesQueryHandler.cs" />
+    <Compile Include="QueryHandlers\GetUserQueryHandler.cs" />
+    <Compile Include="QueryHandlers\GetPackageQueryHandler.cs" />
+    <Compile Include="QueryHandlers\IQueryDispatcher.cs" />
+    <Compile Include="QueryHandlers\IQueryHandler.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MacroContext.Contract\MacroContext.Contract.csproj">
+      <Project>{0287b311-5262-4d03-8d7b-a02b5c3785cf}</Project>
+      <Name>MacroContext.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroContext.Domain\MacroContext.Domain.csproj">
+      <Project>{ED672F35-EB0C-455B-9084-34297A9E6020}</Project>
+      <Name>MacroContext.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroContext.Persistance\MacroContext.Persistence.csproj">
+      <Project>{D1713E10-15CB-4BA4-82CD-C05F85356A19}</Project>
+      <Name>MacroContext.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroContext.Shared\MacroContext.Shared.csproj">
+      <Project>{7BA8B09D-F8A5-4D1D-A2A1-8FBA2C22581E}</Project>
+      <Name>MacroContext.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

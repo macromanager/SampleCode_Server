@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B666DBF0-523E-4CFC-B944-F0C929BE2529}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MacroContext.Infrastructure</RootNamespace>
+    <AssemblyName>MacroContext.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.28\lib\net46\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mono.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.2.2.7\lib\net45\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Npgsql, Version=2.2.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.2.2.7\lib\net45\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql.EntityFramework, Version=2.2.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.EntityFramework.2.2.7\lib\net45\Npgsql.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.5.0.1\lib\net451\RabbitMQ.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.9.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Enrichers.Thread, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Enrichers.Thread.3.1.0\lib\net45\Serilog.Enrichers.Thread.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.4.1.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=4.4.3.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.4.4.3\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstractions\CommandDispatcher.cs" />
+    <Compile Include="Abstractions\Loggers\SerilogAdapter.cs" />
+    <Compile Include="Abstractions\Mapper\ReferenceProfileProfile.cs" />
+    <Compile Include="Abstractions\Mapper\UserProfile.cs" />
+    <Compile Include="Abstractions\MetaData\MessageTypeManager.cs" />
+    <Compile Include="Abstractions\MetaData\QueryInfo.cs" />
+    <Compile Include="Abstractions\Orm\DbConfig.cs" />
+    <Compile Include="Abstractions\Orm\IMacroContextDb.cs" />
+    <Compile Include="Abstractions\Orm\ReferenceProfileRepository.cs" />
+    <Compile Include="Abstractions\Orm\UserRepository.cs" />
+    <Compile Include="Abstractions\QueryDispatcher.cs" />
+    <Compile Include="Abstractions\QueryProcessor.cs" />
+    <Compile Include="Abstractions\CommandProcessor.cs" />
+    <Compile Include="Abstractions\Mapper\AutoMapperConfiguration.cs" />
+    <Compile Include="Abstractions\Mapper\MacroProfile.cs" />
+    <Compile Include="Abstractions\Mapper\MacroProfileProfile.cs" />
+    <Compile Include="Abstractions\Mapper\PackageProfile.cs" />
+    <Compile Include="Abstractions\Mapper\Mapper.cs" />
+    <Compile Include="Abstractions\Orm\MacroContextDb.cs" />
+    <Compile Include="Abstractions\Orm\MacroProfileRepository.cs" />
+    <Compile Include="Abstractions\Orm\MacroRepository.cs" />
+    <Compile Include="Abstractions\Orm\PackageRepository.cs" />
+    <Compile Include="Abstractions\Orm\Repository.cs" />
+    <Compile Include="Abstractions\Orm\UnitOfWork.cs" />
+    <Compile Include="Abstractions\RequestOrchestrator.cs" />
+    <Compile Include="AppSettings.cs" />
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="CrossCuttingConcerns\EventPublisherCommandProcessorDecorator.cs" />
+    <Compile Include="CrossCuttingConcerns\EventStoreImpl.cs" />
+    <Compile Include="CrossCuttingConcerns\lEventPublisher.cs" />
+    <Compile Include="CrossCuttingConcerns\LifeTimeScopeQueryProcessorDecorator.cs" />
+    <Compile Include="CrossCuttingConcerns\LifeTimeScopeCommandProcessorDecorator.cs" />
+    <Compile Include="CrossCuttingConcerns\TransactionScopeCommandProcessorDecorator.cs" />
+    <Compile Include="FatalErrorHandlers\FatalExceptionHandler.cs" />
+    <Compile Include="FatalErrorHandlers\FatalExceptionObject.cs" />
+    <Compile Include="IocInstallers\ApplicationServicesInstaller.cs" />
+    <Compile Include="IocInstallers\InfrastructureInstaller.cs" />
+    <Compile Include="IocInstallers\PersistanceInstaller.cs" />
+    <Compile Include="MessengerServices\ClientConnectionService.cs" />
+    <Compile Include="MessengerServices\EventPublisher.cs" />
+    <Compile Include="MessengerServices\QueryProcessorService.cs" />
+    <Compile Include="MessengerServices\CommandProcessorService.cs" />
+    <Compile Include="MessengerServices\ServiceHosts.cs" />
+    <Compile Include="Migrations\202001182202216_InitialCreate.cs" />
+    <Compile Include="Migrations\202001182202216_InitialCreate.Designer.cs">
+      <DependentUpon>202001182202216_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002171830309_pkg-downloads.cs" />
+    <Compile Include="Migrations\202002171830309_pkg-downloads.Designer.cs">
+      <DependentUpon>202002171830309_pkg-downloads.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Migrations\202001182202216_InitialCreate.resx">
+      <DependentUpon>202001182202216_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002171830309_pkg-downloads.resx">
+      <DependentUpon>202002171830309_pkg-downloads.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MacroContext.ApplicationServices\MacroContext.ApplicationServices.csproj">
+      <Project>{0346edc3-ee74-495a-bbbf-53269d82094e}</Project>
+      <Name>MacroContext.ApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroContext.Contract\MacroContext.Contract.csproj">
+      <Project>{0287b311-5262-4d03-8d7b-a02b5c3785cf}</Project>
+      <Name>MacroContext.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroContext.Domain\MacroContext.Domain.csproj">
+      <Project>{ed672f35-eb0c-455b-9084-34297a9e6020}</Project>
+      <Name>MacroContext.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroContext.Persistance\MacroContext.Persistence.csproj">
+      <Project>{d1713e10-15cb-4ba4-82cd-c05f85356a19}</Project>
+      <Name>MacroContext.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MacroContext.Shared\MacroContext.Shared.csproj">
+      <Project>{7ba8b09d-f8a5-4d1d-a2a1-8fba2c22581e}</Project>
+      <Name>MacroContext.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>EvanApps_MacroContextContract</id>
+    <version>1.6.2</version>
+    <authors>Evan</authors>
+    <owners>Evan</owners>
+    <!-- <licenseUrl>https://github.com/Titaniumstein/LamdaToolsLibrary</licenseUrl> -->
+    <!-- <projectUrl>https://github.com/Titaniumstein/LamdaToolsLibrary</projectUrl> -->
+    <!-- <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl> -->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>DTOs for communicating with MacroContext Server</description>
+    <releaseNotes>First release.</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>EvanApps Tag1 Tag2</tags>
+    <dependencies>
+	  <!-- <dependency id="Aq.ExpressionJsonSerializer" version="0.18" /> -->
+	  <!-- <dependency id="LamdaToolsLibrary" version="1.1.0" /> -->
+	  <!-- <dependency id="Newtonsoft.Json" version="12.0.1" /> -->
+	  <!-- <dependency id="Serialize.Linq" version="1.7.1" /> -->
+      <!-- <dependency id="SampleDependency" version="1.0" /> -->
+    </dependencies>
+  </metadata>
+  	<files>
+		<!-- <file src="LamdaTools\LamdaPropertyNameGetter.cs" target="content\LamdaPropertyNameGetter.cs"/> -->
+		<!-- <file src="LamdaTools\bin\Release\LamdaTools.dll" target="lib/LamdaTools"/> -->
+		<file src="MacroContext.Contract\bin\Release\MacroContext.Contract.dll" target="lib/MacroContext.Contract"/>
+		<file src="MacroContext.Contract\bin\Release\MacroContext.Shared.dll" target="lib/MacroContext.Contract"/>
+
+	</files>
+</package>

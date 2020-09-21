@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0287B311-5262-4D03-8D7B-A02B5C3785CF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MacroContext.Contract</RootNamespace>
+    <AssemblyName>MacroContext.Contract</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AmqpInfo.cs" />
+    <Compile Include="Commands\AddReferenceProfilesToPackageCommand.cs" />
+    <Compile Include="Commands\AddMacrosToPackageCommand.cs" />
+    <Compile Include="Commands\BatchCommand.cs" />
+    <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\EditMacrosCommand.cs" />
+    <Compile Include="Commands\RegisterUserCommand.cs" />
+    <Compile Include="Commands\RemoveReferenceProfilesFromPackageCommand.cs" />
+    <Compile Include="Commands\RemoveMacrosFromPackageCommand.cs" />
+    <Compile Include="Commands\DownloadPackageCommand.cs" />
+    <Compile Include="Commands\RemoveUserCommand.cs" />
+    <Compile Include="Commands\RemovePackageCommand.cs" />
+    <Compile Include="Commands\EditPackageCommand.cs" />
+    <Compile Include="Commands\AddPackageCommand.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="ConnectionInfo.cs" />
+    <Compile Include="ConnectToServerRequest.cs" />
+    <Compile Include="Dto\CompleteMacroDto.cs" />
+    <Compile Include="Dto\MacroDto.cs" />
+    <Compile Include="Dto\MacroProfileDto.cs" />
+    <Compile Include="Dto\PackageDto.cs" />
+    <Compile Include="Dto\ReferenceProfileDto.cs" />
+    <Compile Include="Dto\UserDto.cs" />
+    <Compile Include="Errors\EntitiesAlreadyExistsError.cs" />
+    <Compile Include="Events\PackageDownloadedEvent.cs" />
+    <Compile Include="Events\ReferenceProfileRemovedEvent.cs" />
+    <Compile Include="Events\ReferenceProfileAddedEvent.cs" />
+    <Compile Include="Events\UserRemovedEvent.cs" />
+    <Compile Include="Events\UserRegisteredEvent.cs" />
+    <Compile Include="Events\MacroAddedEvent.cs" />
+    <Compile Include="Events\MacroRemovedEvent.cs" />
+    <Compile Include="Events\MacroEditedEvent.cs" />
+    <Compile Include="Events\PackageEditedEvent.cs" />
+    <Compile Include="Events\PackageRemovedEvent.cs" />
+    <Compile Include="Events\TransactionResult.cs" />
+    <Compile Include="Events\IEvent.cs" />
+    <Compile Include="Events\PackageAddedEvent.cs" />
+    <Compile Include="IClientConnectionService.cs" />
+    <Compile Include="IQueryProcessorService.cs" />
+    <Compile Include="ICommandProcessorService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\CheckPackageUniqueNameQuery.cs" />
+    <Compile Include="Queries\GetPackageLibraryMetadata.cs" />
+    <Compile Include="Queries\GetReferenceProfilesByPackageIdQuery.cs" />
+    <Compile Include="Queries\PagingQueryBase.cs" />
+    <Compile Include="Queries\SearchPackagesQuery.cs" />
+    <Compile Include="Queries\GetPackagesByUserIdQuery.cs" />
+    <Compile Include="Queries\GetMacrosByPackageIdQuery.cs" />
+    <Compile Include="Queries\GetAllPackagesQuery.cs" />
+    <Compile Include="Queries\GetAllUsersQuery.cs" />
+    <Compile Include="Queries\GetUserQuery.cs" />
+    <Compile Include="Queries\GetPackageQuery.cs" />
+    <Compile Include="Queries\IQuery.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MacroContext.Shared\MacroContext.Shared.csproj">
+      <Project>{7BA8B09D-F8A5-4D1D-A2A1-8FBA2C22581E}</Project>
+      <Name>MacroContext.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--<Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />-->
+  <PropertyGroup>
+    <MyMsBuild>"$(MSBuildBinPath)\MSBuild.exe"</MyMsBuild>
+    <MySolutionDir>$(MSBuildThisFileDirectory)</MySolutionDir>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <MinorIncrement Condition=" '$(ReleaseType)' == '' ">None</MinorIncrement>
+    <MinorIncrement Condition=" '$(MinorIncrement)' == '' ">None</MinorIncrement>
+    <BuildIncrement>Increment</BuildIncrement>
+    <BuildIncrement Condition=" '$(MinorIncrement)' == 'Increment' ">Reset</BuildIncrement>
+    <VersionNumber></VersionNumber>
+    <VersionFilePath>version.txt</VersionFilePath>
+    <PreviousVersionNumber></PreviousVersionNumber>
+    <PreviousVersionFilePath>versionPrevious.txt</PreviousVersionFilePath>
+    <BuildSolutionCmd>$(MyMsBuild) MacroContext.sln /p:Configuration=$(Configuration)</BuildSolutionCmd>
+    <MsTestExeCmd>VSTest.Console.EXE ./MacroManager.ControllersTest/bin/$(configuration)/MacroManager.ControllersTest.dll</MsTestExeCmd>
+    <NugetArtifactsDir>$(MySolutionDir)nuget-publish-artifacts</NugetArtifactsDir>
+    <NugetFeedApiKey>fakeAPIkey</NugetFeedApiKey>
+    <NugetFeedSource>https://api.nuget.org/v3/index.json</NugetFeedSource>
+    <NugetSpecFilename>Package.nuspec</NugetSpecFilename>
+    <NugetPackCmd>nuget.exe pack $(MySolutionDir)\$(NugetSpecFilename) -OutputDirectory $(NugetArtifactsDir)</NugetPackCmd>
+    <NugetPublishCmd>nuget.exe push $(NugetArtifactsDir)\*.nupkg $(NugetFeedApiKey) -NoSymbols -source $(NugetFeedSource)</NugetPublishCmd>
+    <MyReleaseOutput>$(MySolutionDir)release</MyReleaseOutput>
+    <StartUpProject>$(MySolutionDir)MacroManagerGateKeeper</StartUpProject>
+  </PropertyGroup>
+
+
+  <Target Name="CompileSolution">
+
+    <Message Text="Beging Building Solution: $(Configuration)" />
+
+    <Exec Command="$(BuildSolutionCmd)"
+          ContinueOnError="false" />
+  </Target>
+
+  <Target Name="Build">
+    <Message Text="test variable 1: $(MySolutionDir)" />
+    <Message Text="test variable 2: $(MyReleaseOutput)" />
+    <Message Text="test variable 2: $(MSBuildBinPath)" />
+    <!--<Error Text="Test error" />-->
+
+
+    <Message Text="Before Build: $(Configuration)" />
+    <CallTarget Targets="BeforeBuild"/>
+
+    <Message Text="Building: $(Configuration)" />
+    <CallTarget Targets="CompileSolution"/>
+
+    <Message Text="After Building: $(Configuration)" />
+    <CallTarget Targets="AfterBuild"/>
+    <!--<OnError ExecuteTargets="HandleErrors"/>-->
+  </Target>
+
+  <Target Name="Release">
+    <!--Condition="$(Configuration) == 'Release'">-->
+    <Message Text="Begin Release: $(Configuration)" />
+    <!--<CallTarget Targets="SetReleaseConfiguration"/>-->
+    <!--<Message Text="Release-test2: $(Configuration)" />-->
+    <CallTarget Targets="Build"/>
+    <CallTarget Targets="ReleaseOutput"/>
+  </Target>
+
+  <Target Name="ReleaseOutput">
+    <Message Text="Begin Release Output: $(Configuration)" />
+    <RemoveDir Directories="$(MyReleaseOutput)" Condition="Exists('$(MyReleaseOutput)')" />
+    <MakeDir Directories="$(MyReleaseOutput)" />
+    <ItemGroup>
+      <MyReleaseFiles Include="$(StartUpProject)\bin\$(Configuration)\*.*" Exclude="$(StartUpProject)bin\$(Configuration)\*vshost.exe" />
+      <myMsiFiles Include="$(MsiProject)\bin\$(Configuration)\*.*"/>
+    </ItemGroup>
+    <Copy SourceFiles="@(MyReleaseFiles)" DestinationFolder="$(MyReleaseOutput)" />
+    <Copy SourceFiles="@(myMsiFiles)" DestinationFolder="$(MyReleaseOutput)\installer" />
+  </Target>
+
+  <Target Name="BeforeBuild">
+    
+  </Target>
+
+  <Target Name="AfterBuild">
+    
+  </Target>
+
+  <Target Name="PublishNuget">
+    <Message Text="publihsing nuget pkg: $(Configuration)" />
+    
+    <CallTarget Targets="CompileSolution"/>
+    
+    <RemoveDir Directories="$(NugetArtifactsDir)" Condition="Exists('$(NugetArtifactsDir)')" />
+    <MakeDir Directories="$(NugetArtifactsDir)" />
+    <!--<ItemGroup>
+      <MyItem Include="$(NugetArtifactsDir)\*.nupkg" />
+    </ItemGroup>-->
+    <Message Text="create nupkg: $(Configuration)" />
+    <Exec Command="$(NugetPackCmd)"
+      ContinueOnError="false" />
+
+    <Message Text="publihsing nupkg: $(Configuration)" />
+    <Exec Command="$(NugetPublishCmd)"
+      ContinueOnError="false" />
+  </Target>
+</Project>
